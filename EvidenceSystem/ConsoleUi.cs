@@ -1,13 +1,14 @@
 using System;
 using System.Threading.Tasks;
+using EvidenceSystem.Business;
 
 namespace EvidenceSystem.UI
 {
     public class ConsoleUI
     {
-        private readonly EvidenceService _evidenceService;
+        private readonly IEvidenceService _evidenceService;
 
-        public ConsoleUI(EvidenceService service)
+        public ConsoleUI(IEvidenceService service)
         {
             _evidenceService = service;
         }
@@ -52,7 +53,7 @@ namespace EvidenceSystem.UI
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"[ОШИБКА БД] {ex.Message}");
+                    Console.WriteLine($"[ОШИБКА] {ex.Message}");
                     Console.ReadLine();
                 }
             }

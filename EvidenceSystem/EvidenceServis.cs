@@ -1,24 +1,19 @@
-using System.Collections.Generic;
+using System;
 using System.Threading.Tasks;
 using EvidenceSystem.Data;
-using EvidenceSystem.Models;
 
-namespace EvidenceSystem
+namespace EvidenceSystem.Business
 {
-    public class EvidenceService
+    public class EvidenceService : EvidenceServiceBase
     {
-        private readonly EvidenceDbContext _dbContext = new();
+        public EvidenceService() : base(new EvidenceDbContext()) { }
 
-        public async Task<List<Evidence>> GetAllEvidenceAsync() => await _dbContext.GetAllAsync();
-
-        public async Task<Evidence?> GetByIdAsync(int id) => await _dbContext.GetByIdAsync(id);
-
-        public async Task AddEvidenceAsync(string name, string description)
+        public override async Task AddEvidenceAsync(string name, string description)
         {
-            var evidence = new Evidence { Name = name, Description = description };
-            await _dbContext.AddAsync(evidence);
-        }
+            if (description?.Length > 500)
+                throw new ArgumentException("Описание слишком длинное (максимум 500 символов).");
 
-        public async Task<bool> DeleteByIdAsync(int id) => await _dbContext.DeleteAsync(id);
+            await base.AddEvidenceAsync(name, description);
+        }
     }
 }
