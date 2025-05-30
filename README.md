@@ -201,3 +201,13 @@ CREATE TABLE IF NOT EXISTS Evidence (
  • Исключения, возникающие при ошибках, перехватываются и обрабатываются на уровне UI.
  • Логика удаления и поиска по ID проверена на корректность и возврат ожидаемых результатов.
  • Все операции с базой данных выполняются асинхронно, что повышает отзывчивость приложения.
+
+  Итог проведенных действий:
+  ![alt text](image-3.png)
+  ![alt text](image-4.png)
+  ![alt text](image-5.png)
+  ![alt text](image-6.png)
+  ![alt text](image-7.png)
+  ![alt text](image-8.png)
+  ![alt text](image-9.png)
+  ![alt text](image-10.png)
