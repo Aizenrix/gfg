@@ -99,7 +99,6 @@
 
 ## Сборка и запуск
 
-```bash
 dotnet build
 dotnet run
 
